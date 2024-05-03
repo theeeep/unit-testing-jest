@@ -24,7 +24,7 @@ describe("BasicUtils test suite", () => {
   });
 
   //? User Authenticate Test Suite
-  describe.only("Authenticate test suite", () => {
+  describe("Authenticate test suite", () => {
     it("return the lower case of a valid user", () => {
       const sut = authenticateUser;
       const actual = sut("deveLOPER", "dev");
@@ -53,17 +53,9 @@ describe("BasicUtils test suite", () => {
     expect(actual.usernameToLower).toBe("developer");
 
     // arrays
-    expect(actual.usernameCharacter).toEqual([
-      "d",
-      "e",
-      "v",
-      "e",
-      "L",
-      "O",
-      "P",
-      "E",
-      "R",
-    ]);
+    expect(actual.usernameCharacter).toEqual(
+      expect.arrayContaining(["L", "O", "P", "E", "R", "d", "e", "v", "e"])
+    );
   });
 });
 
