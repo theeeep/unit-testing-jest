@@ -1,4 +1,4 @@
-import { product } from "../app/BasicUtils";
+import { authenticateUser, product } from "../app/BasicUtils";
 
 // describe("BasicUtils test suite", () => {
 //   it("return the product of 3 and 2", () => {
@@ -21,6 +21,26 @@ describe("BasicUtils test suite", () => {
     expect(actual).toEqual(6);
     expect(actual).toBeLessThan(9);
     expect(actual).toBeGreaterThan(5);
+  });
+
+  //? User Authenticate Test Suite
+  it("User authenticate", () => {
+    const sut = authenticateUser;
+    const actual = sut("deveLOPER", "dev");
+    expect(actual.usernameToLower).toBe("developer");
+
+    // arrays
+    expect(actual.usernameCharacter).toEqual([
+      "d",
+      "e",
+      "v",
+      "e",
+      "L",
+      "O",
+      "P",
+      "E",
+      "R",
+    ]);
   });
 });
 
