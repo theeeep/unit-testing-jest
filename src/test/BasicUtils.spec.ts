@@ -45,17 +45,26 @@ describe("BasicUtils test suite", () => {
         "R",
       ]);
     });
-  });
-
-  it("User authenticate", () => {
-    const sut = authenticateUser;
-    const actual = sut("deveLOPER", "dev");
-    expect(actual.usernameToLower).toBe("developer");
-
-    // arrays
-    expect(actual.usernameCharacter).toEqual(
-      expect.arrayContaining(["L", "O", "P", "E", "R", "d", "e", "v", "e"])
-    );
+    it("return the misc username character of a valid user", () => {
+      const sut = authenticateUser;
+      const actual = sut("deveLOPER", "dev");
+      expect(actual.usernameToLower).toBe("developer");
+      // arrays
+      expect(actual.usernameCharacter).toEqual(
+        expect.arrayContaining(["L", "O", "P", "E", "R", "d", "e", "v", "e"])
+      );
+    });
+    it("return user details of a valid user", () => {
+      const sut = authenticateUser;
+      const actual = sut("deveLOPER", "dev");
+      expect(actual.userDetails).toEqual({});
+    });
+    it("return user details of a valid user", () => {
+      const sut = authenticateUser;
+      const actual = sut("deveLOPER", "dev");
+      expect(actual.userDetails).toBeDefined();
+      expect(actual.userDetails).not.toBeUndefined;
+    });
   });
 });
 
