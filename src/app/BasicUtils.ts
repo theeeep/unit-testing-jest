@@ -17,3 +17,12 @@ export function authenticateUser(
     isAuthenticated: authStatus,
   };
 }
+
+export class UsernameToLowerCase {
+  public toLower(username: string) {
+    if (username === "") {
+      throw new Error("Invalid username sorry!");
+    }
+    return username.toLowerCase();
+  }
+}

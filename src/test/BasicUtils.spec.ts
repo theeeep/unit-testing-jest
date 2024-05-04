@@ -1,4 +1,8 @@
-import { authenticateUser, product } from "../app/BasicUtils";
+import {
+  authenticateUser,
+  product,
+  UsernameToLowerCase,
+} from "../app/BasicUtils";
 
 // describe("BasicUtils test suite", () => {
 //   it("return the product of 3 and 2", () => {
@@ -64,6 +68,20 @@ describe("BasicUtils test suite", () => {
       const actual = sut("deveLOPER", "dev");
       expect(actual.userDetails).toBeDefined();
       expect(actual.userDetails).not.toBeUndefined;
+    });
+  });
+  describe("usernameToLowerCase test suite", () => {
+    //setup
+    let sut: UsernameToLowerCase;
+    beforeAll(() => {
+      console.log("setup from here");
+      sut = new UsernameToLowerCase();
+    });
+    it("return the lower case of a valid username", () => {
+      const actual = sut.toLower("Jack");
+      console.log("i am the main test");
+
+      expect(actual).toBe("jack");
     });
   });
 });
