@@ -27,6 +27,19 @@ describe("BasicUtils test suite", () => {
     expect(actual).toBeGreaterThan(5);
   });
 
+  it.each([
+    [2, 4, 8],
+    [3, 4, 12],
+    [4, 0, 0],
+    [2, 1, 2],
+  ])(
+    "test!! should return the product of %i and %i as %i",
+    (a, b, expected) => {
+      const actual = product(a, b);
+      expect(actual).toEqual(expected);
+    }
+  );
+
   //? User Authenticate Test Suite
   describe("Authenticate test suite", () => {
     it("return the lower case of a valid user", () => {
@@ -73,7 +86,7 @@ describe("BasicUtils test suite", () => {
   describe("usernameToLowerCase test suite", () => {
     //setup
     let sut: UsernameToLowerCase;
-    beforeAll(() => {
+    beforeEach(() => {
       console.log("setup from here");
       sut = new UsernameToLowerCase();
     });
@@ -82,6 +95,9 @@ describe("BasicUtils test suite", () => {
       console.log("i am the main test");
 
       expect(actual).toBe("jack");
+    });
+    it("throws an error for an invalid username", () => {
+      expect(() => sut.toLower("")).toThrow();
     });
   });
 });
